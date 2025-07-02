@@ -1,15 +1,15 @@
 package com.gabo.solidar.domain.type
 
 enum class AssistanceType(
-    name: String
+    name: String,
 ) {
     DONATION(
-        name = "Donación"
+        name = "Donación",
     ),
     VOLUNTARY(
-        name = "Voluntariado"
+        name = "Voluntariado",
     ),
     PROFESSIONAL(
-        name = "Apoyo Profesional"
-    )
+        name = "Apoyo Profesional",
+    ),
 }

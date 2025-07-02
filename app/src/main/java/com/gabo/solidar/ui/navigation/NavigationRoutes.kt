@@ -11,6 +11,8 @@ sealed class NavigationRoutes(
 
     object UserProfile : NavigationRoutes("UserProfile")
 
+    object EditUserProfile : NavigationRoutes("EditUserProfile")
+
     object Login : NavigationRoutes("Login")
 
     object Register : NavigationRoutes("Register")
