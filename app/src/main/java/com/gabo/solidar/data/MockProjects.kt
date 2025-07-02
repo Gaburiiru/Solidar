@@ -1,0 +1,107 @@
+package com.gabo.solidar.data
+
+import com.gabo.solidar.domain.model.ProjectModel
+import com.gabo.solidar.domain.type.AssistanceArea
+import com.gabo.solidar.domain.type.AssistanceType
+import com.gabo.solidar.domain.type.ProjectState
+
+enum class MockProjects(
+    val id: Long,
+    val organization: String,
+    val logo: String,
+    val title: String,
+    val description: String,
+    val assistanceType: AssistanceType,
+    val assistanceArea: AssistanceArea,
+    val state: ProjectState,
+    val location: String,
+    val photos: List<String>,
+    val activityDate: String,
+    val publicationDate: String,
+    val participating: Boolean,
+    val saved: Boolean
+) {
+    RED_MAYOR(
+        id = 1,
+        organization = "Red Mayor",
+        logo = "https://static.wikia.nocookie.net/nutricion-variada/images/d/d9/Diseno-piramide-alimentos-concepto-nutricion_23-2148481206.jpg/revision/latest?cb=20201216104719&path-prefix=es",
+        title = "Asistencia a adultos mayores",
+        description = "Buscamos acompañantes para adultos mayores en residencias geriátricas.",
+        assistanceType = AssistanceType.VOLUNTARY,
+        assistanceArea = AssistanceArea.PEOPLE,
+        state = ProjectState.ACTIVE,
+        location = "Residencia San Nicolas, Ramos Mejía, Provincia de Buenos Aires",
+        photos = listOf(""),
+        activityDate = "Marzo-Diciembre",
+        publicationDate = "2025-07-01",
+        participating = false,
+        saved = true
+    ),
+    VIDA_EN_SANGRE(
+        id = 3,
+        organization = "Vida en Sangre",
+        logo = "https://www.argentina.gob.ar/sites/default/files/gotita_recordatorio.png",
+        title = "Donación de sangre",
+        description = "Participá de la campaña de donación de sangre en hospitales públicos.",
+        assistanceType = AssistanceType.DONATION,
+        assistanceArea = AssistanceArea.PEOPLE,
+        state = ProjectState.ACTIVE,
+        location = "Hospital Posadas, El Palomar, Provincia de Buenos Aires",
+        photos = listOf(""),
+        activityDate = "Sábados y Domingos de 9 a 13 horas",
+        publicationDate = "2025-09-14",
+        participating = true,
+        saved = true
+    ),
+
+    HUELLITAS(
+        id = 2,
+        organization = "Huellitas del Sur",
+        logo = "https://safariafricano.es/wp-content/uploads/sites/8/2024/10/vervet-monkey-babies.jpg",
+        title = "Ayuda a animales rescatados",
+        description = "Voluntariado en refugio de animales en situación de abandono.",
+        assistanceType = AssistanceType.VOLUNTARY,
+        assistanceArea = AssistanceArea.ANIMALS,
+        state = ProjectState.ACTIVE,
+        location = "Provincia de Buenos Aires",
+        photos = listOf(""),
+        activityDate = "Enero-Diciembre",
+        publicationDate = "2025-05-25",
+        participating = false,
+        saved = false
+    ),
+    RESCATE_SOLIDARIO(
+        id = 4,
+        organization = "Rescate Solidario",
+        logo = "https://www.enriquedans.com/wp-content/uploads/2024/11/Climate-emergency.jpeg",
+        title = "Apoyo en emergencias climáticas",
+        description = "Unite a las brigadas de emergencia en zonas afectadas por inundaciones.",
+        assistanceType = AssistanceType.VOLUNTARY,
+        assistanceArea = AssistanceArea.HUMANITARIAN_AID,
+        state = ProjectState.URGENT,
+        location = "Arrecifes, Provincia de Buenos Aires",
+        photos = listOf(""),
+        activityDate = "Sábado 18 de Mayo, 2025",
+        publicationDate = "2025-05-17",
+        participating = false,
+        saved = false
+    ),
+    ;
+    fun toProjectModel() =
+        ProjectModel(
+            id = id,
+            organization = organization,
+            logo = logo,
+            title = title,
+            description = description,
+            assistanceType = assistanceType,
+            assistanceArea = assistanceArea,
+            state = state,
+            location = location,
+            photos = photos,
+            activityDate = activityDate,
+            publicationDate = publicationDate,
+            participating = participating,
+            saved = saved
+        )
+}
