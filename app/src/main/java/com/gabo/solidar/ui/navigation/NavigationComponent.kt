@@ -2,6 +2,7 @@ package com.gabo.solidar.ui.navigation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -15,15 +16,16 @@ import com.gabo.solidar.ui.screens.login.Register
 import com.gabo.solidar.ui.screens.post.Post
 import com.gabo.solidar.ui.screens.proyect.Proyect
 import com.gabo.solidar.ui.screens.splash.Splash
+import com.gabo.solidar.ui.screens.userProfile.EditUserProfile
 import com.gabo.solidar.ui.screens.userProfile.UserProfile
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.P)
 @Composable
 fun NavigationComponent(
     navigationController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
-
     val postMock = MockPosts.entries.map { it.toPostModel() }
 
     NavHost(
@@ -38,8 +40,13 @@ fun NavigationComponent(
             Home(post = postMock)
         }
         composable(NavigationRoutes.UserProfile.route) {
-            UserProfile()
+            UserProfile(navController = navigationController)
         }
+
+        composable(NavigationRoutes.EditUserProfile.route) {
+            EditUserProfile(navController = navigationController)
+        }
+
         composable(NavigationRoutes.Proyect.route) {
             Proyect()
         }

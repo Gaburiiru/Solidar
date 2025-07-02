@@ -19,7 +19,7 @@ enum class MockProjects(
     val activityDate: String,
     val publicationDate: String,
     val participating: Boolean,
-    val saved: Boolean
+    val saved: Boolean,
 ) {
     RED_MAYOR(
         id = 1,
@@ -35,7 +35,7 @@ enum class MockProjects(
         activityDate = "Marzo-Diciembre",
         publicationDate = "2025-07-01",
         participating = false,
-        saved = true
+        saved = true,
     ),
     VIDA_EN_SANGRE(
         id = 3,
@@ -51,7 +51,7 @@ enum class MockProjects(
         activityDate = "Sábados y Domingos de 9 a 13 horas",
         publicationDate = "2025-09-14",
         participating = true,
-        saved = true
+        saved = true,
     ),
 
     HUELLITAS(
@@ -68,7 +68,7 @@ enum class MockProjects(
         activityDate = "Enero-Diciembre",
         publicationDate = "2025-05-25",
         participating = false,
-        saved = false
+        saved = false,
     ),
     RESCATE_SOLIDARIO(
         id = 4,
@@ -84,9 +84,10 @@ enum class MockProjects(
         activityDate = "Sábado 18 de Mayo, 2025",
         publicationDate = "2025-05-17",
         participating = false,
-        saved = false
+        saved = false,
     ),
     ;
+
     fun toProjectModel() =
         ProjectModel(
             id = id,
@@ -102,6 +103,6 @@ enum class MockProjects(
             activityDate = activityDate,
             publicationDate = publicationDate,
             participating = participating,
-            saved = saved
+            saved = saved,
         )
 }
