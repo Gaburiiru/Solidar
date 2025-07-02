@@ -1,15 +1,15 @@
 package com.gabo.solidar.domain.type
 
 enum class ProjectState(
-    name: String,
+    val n: String
 ) {
     URGENT(
-        name = "En urgencia",
+        n = "En urgencia"
     ),
     STARTING(
-        name = "Por Empezar",
+        n = "Por Empezar"
     ),
     ACTIVE(
-        name = "Activo",
-    ),
+        n = "Activo"
+    )
 }

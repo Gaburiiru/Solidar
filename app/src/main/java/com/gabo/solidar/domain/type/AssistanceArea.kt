@@ -1,24 +1,24 @@
 package com.gabo.solidar.domain.type
 
 enum class AssistanceArea(
-    name: String,
+    val n: String
 ) {
     ANIMALS(
-        name = "Animales",
+        n = "Animales"
     ),
     PEOPLE(
-        name = "Personas",
+        n = "Personas"
     ),
     CLIMATE_CHANGE(
-        name = "Cambio Climático",
+        n = "Cambio Climático"
     ),
     SCIENCE(
-        name = "Ciencia",
+        n = "Ciencia"
     ),
     HUMAN_RIGHTS(
-        name = "Derechos Humanos",
+        n = "Derechos Humanos"
     ),
     HUMANITARIAN_AID(
-        name = "Ayuda Humanitaria",
-    ),
+        n = "Ayuda Humanitaria"
+    )
 }

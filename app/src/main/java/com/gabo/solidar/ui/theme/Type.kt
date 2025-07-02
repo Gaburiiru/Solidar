@@ -1,6 +1,7 @@
 package com.gabo.solidar.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -23,7 +24,8 @@ val Typography = Typography(
     bodySmall = TextStyle(
         fontFamily = Fonts.MontserratThin,
         fontWeight = FontWeight.Thin,
-        fontSize = 15.sp
+        fontSize = 10.sp,
+        color = Color.Black
     ),
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
