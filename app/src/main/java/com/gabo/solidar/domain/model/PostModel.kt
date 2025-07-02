@@ -1,3 +1,4 @@
+import com.gabo.solidar.domain.type.AssistanceArea
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -13,5 +14,6 @@ data class PostModel(
     val likes: Long,
     val comments: Long,
     val shared: Long,
+    val pictures: String,
+    val assistanceArea: AssistanceArea,
 )
-

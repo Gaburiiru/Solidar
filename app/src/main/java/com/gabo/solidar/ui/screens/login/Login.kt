@@ -24,12 +24,13 @@ import com.gabo.solidar.ui.navigation.NavigationRoutes
 fun Login(navController: NavController) {
     Scaffold { padding ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(24.dp),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+                    .padding(24.dp),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text("Iniciar sesión", style = MaterialTheme.typography.headlineSmall)
 
@@ -38,15 +39,15 @@ fun Login(navController: NavController) {
             OutlinedTextField(
                 value = "",
                 onValueChange = {},
-                label = { Text("Nombre") },
-                modifier = Modifier.fillMaxWidth()
+                label = { Text("Email") },
+                modifier = Modifier.fillMaxWidth(),
             )
 
             OutlinedTextField(
                 value = "",
                 onValueChange = {},
                 label = { Text("Contraseña") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
 
             Spacer(modifier = Modifier.height(16.dp))

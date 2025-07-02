@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import com.gabo.solidar.data.MockPosts
 import com.gabo.solidar.ui.screens.discover.Discover
 import com.gabo.solidar.ui.screens.home.Home
+import com.gabo.solidar.ui.screens.home.PostExperience
 import com.gabo.solidar.ui.screens.login.Login
 import com.gabo.solidar.ui.screens.login.Register
 import com.gabo.solidar.ui.screens.post.Post
@@ -37,7 +38,7 @@ fun NavigationComponent(
             Splash(navController = navigationController)
         }
         composable(NavigationRoutes.Home.route) {
-            Home(post = postMock)
+            Home(posts = postMock, navController = navigationController)
         }
         composable(NavigationRoutes.UserProfile.route) {
             UserProfile(navController = navigationController)
@@ -61,6 +62,11 @@ fun NavigationComponent(
         }
         composable(NavigationRoutes.Discover.route) {
             Discover()
+        }
+        composable(NavigationRoutes.PostExperience.route) {
+            PostExperience(
+                navController = navigationController,
+            )
         }
     }
 }

@@ -18,5 +18,5 @@ data class ProjectModel(
     val activityDate: String,
     val publicationDate: String,
     val participating: Boolean,
-    val saved: Boolean
+    val saved: Boolean,
 )

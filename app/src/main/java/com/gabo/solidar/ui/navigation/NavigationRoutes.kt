@@ -20,4 +20,6 @@ sealed class NavigationRoutes(
     object Post : NavigationRoutes("Post")
 
     object Discover : NavigationRoutes("Discover")
+
+    object PostExperience : NavigationRoutes("PostExperience")
 }

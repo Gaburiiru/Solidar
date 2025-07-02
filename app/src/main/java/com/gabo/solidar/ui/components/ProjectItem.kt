@@ -31,7 +31,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,58 +48,61 @@ import com.gabo.solidar.ui.theme.LightMagenta
 import com.gabo.solidar.ui.theme.LightRed
 import com.gabo.solidar.ui.theme.LightYellow
 import com.gabo.solidar.ui.theme.Yellow
+import com.gabo.solidar.ui.theme.cardColor
 
 @Composable
-fun ProjectItem(
-    project: ProjectModel
-) {
+fun ProjectItem(project: ProjectModel) {
     Card(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
+        modifier =
+            Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = cardColor),
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             // Header
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(0.75f),
                     horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     AsyncImage(
                         model = project.logo,
                         contentDescription = "Logo Organización",
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(Color.LightGray)
+                        modifier =
+                            Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(Color.LightGray),
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = project.organization,
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 15.sp
-                        ),
-                        modifier = Modifier.weight(1f)
+                        style =
+                            MaterialTheme.typography.titleMedium.copy(
+                                fontSize = 15.sp,
+                            ),
+                        modifier = Modifier.weight(1f),
                     )
                 }
                 IconButton(
-                    onClick = {}
+                    onClick = {},
                 ) {
                     Icon(
-                        imageVector = if (project.saved) {
-                            Icons.Default.Bookmark
-                        } else {
-                            Icons.Default.BookmarkBorder
-                        },
+                        imageVector =
+                            if (project.saved) {
+                                Icons.Default.Bookmark
+                            } else {
+                                Icons.Default.BookmarkBorder
+                            },
                         contentDescription = "Guardar",
-                        tint = Green
+                        tint = Green,
                     )
                 }
             }
@@ -109,15 +111,17 @@ fun ProjectItem(
 
             // Título
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
+                modifier =
+                    Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth(),
             ) {
                 Text(
                     text = project.title,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontSize = 25.sp
-                    ),
+                    style =
+                        MaterialTheme.typography.titleMedium.copy(
+                            fontSize = 25.sp,
+                        ),
                 )
             }
 
@@ -125,9 +129,10 @@ fun ProjectItem(
 
             // Descripción
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
+                modifier =
+                    Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth(),
             ) {
                 Text(
                     text = project.description,
@@ -139,35 +144,40 @@ fun ProjectItem(
 
             // Tags
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxWidth()
+                modifier =
+                    Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth(),
             ) {
                 AssistChip(
                     onClick = {},
-                    label = {Text(project.assistanceArea.n)},
-                    colors = AssistChipDefaults.assistChipColors(
-                        containerColor = when (project.assistanceArea) {
-                            AssistanceArea.PEOPLE -> LightBlue
-                            AssistanceArea.ANIMALS -> LightYellow
-                            AssistanceArea.HUMANITARIAN_AID -> LightRed
-                            AssistanceArea.HUMAN_RIGHTS -> Color.White
-                            AssistanceArea.CLIMATE_CHANGE -> LightGreen
-                            AssistanceArea.SCIENCE -> LightMagenta
-                        }
-                    )
+                    label = { Text(project.assistanceArea.n) },
+                    colors =
+                        AssistChipDefaults.assistChipColors(
+                            containerColor =
+                                when (project.assistanceArea) {
+                                    AssistanceArea.PEOPLE -> LightBlue
+                                    AssistanceArea.ANIMALS -> LightYellow
+                                    AssistanceArea.HUMANITARIAN_AID -> LightRed
+                                    AssistanceArea.HUMAN_RIGHTS -> Color.White
+                                    AssistanceArea.CLIMATE_CHANGE -> LightGreen
+                                    AssistanceArea.SCIENCE -> LightMagenta
+                                },
+                        ),
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 AssistChip(
                     onClick = {},
-                    label = {Text(project.assistanceType.n)},
-                    colors = AssistChipDefaults.assistChipColors(
-                        containerColor = when (project.assistanceType) {
-                            AssistanceType.DONATION -> Green
-                            AssistanceType.VOLUNTARY -> Yellow
-                            AssistanceType.PROFESSIONAL -> Blue
-                        }
-                    )
+                    label = { Text(project.assistanceType.n) },
+                    colors =
+                        AssistChipDefaults.assistChipColors(
+                            containerColor =
+                                when (project.assistanceType) {
+                                    AssistanceType.DONATION -> Green
+                                    AssistanceType.VOLUNTARY -> Yellow
+                                    AssistanceType.PROFESSIONAL -> Blue
+                                },
+                        ),
                 )
             }
 
@@ -177,22 +187,23 @@ fun ProjectItem(
 
             // Ubicación y fecha
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         modifier = Modifier.size(18.dp),
                         imageVector = Icons.Default.LocationOn,
-                        contentDescription = ""
+                        contentDescription = "",
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = project.location,
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
                 Spacer(modifier = Modifier.height(6.dp))
@@ -200,14 +211,14 @@ fun ProjectItem(
                     Icon(
                         modifier = Modifier.size(18.dp),
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = ""
+                        contentDescription = "",
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = project.activityDate,
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }

@@ -23,12 +23,13 @@ import com.gabo.solidar.ui.navigation.NavigationRoutes
 fun Register(navController: NavController) {
     Scaffold { padding ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(24.dp),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+                    .padding(24.dp),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text("Registro", style = MaterialTheme.typography.headlineSmall)
 
@@ -39,6 +40,7 @@ fun Register(navController: NavController) {
             OutlinedTextField(value = "", onValueChange = {}, label = { Text("Localidad") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = "", onValueChange = {}, label = { Text("Ciudad") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = "", onValueChange = {}, label = { Text("Edad") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(value = "", onValueChange = {}, label = { Text("Email") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(value = "", onValueChange = {}, label = { Text("Contraseña") }, modifier = Modifier.fillMaxWidth())
 
             Spacer(modifier = Modifier.height(16.dp))

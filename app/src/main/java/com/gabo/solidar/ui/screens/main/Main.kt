@@ -25,7 +25,10 @@ fun Main() {
     Scaffold(
         contentWindowInsets = WindowInsets(0),
         bottomBar = {
-            if (currentRoute != NavigationRoutes.Splash.route && currentRoute != NavigationRoutes.Login.route && currentRoute != NavigationRoutes.Register.route) {
+            if (currentRoute != NavigationRoutes.Splash.route &&
+                currentRoute != NavigationRoutes.Login.route &&
+                currentRoute != NavigationRoutes.Register.route
+            ) {
                 BottomBar(controller = navController)
             }
         },
