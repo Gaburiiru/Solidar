@@ -9,6 +9,8 @@ sealed class NavigationRoutes(
 
     object Proyect : NavigationRoutes("Proyect")
 
+    object ProjectDetails : NavigationRoutes("ProjectDetails")
+
     object UserProfile : NavigationRoutes("UserProfile")
 
     object EditUserProfile : NavigationRoutes("EditUserProfile")

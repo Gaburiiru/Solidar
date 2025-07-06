@@ -40,10 +40,10 @@ fun Splash(navController: NavController) {
             contentDescription = stringResource(id = R.string.app_name),
             modifier = Modifier.size(200.dp), // opcional
         )
-        Spacer(modifier = Modifier.height(8.dp)) // reduce o ajusta el espacio
+        /* Spacer(modifier = Modifier.height(8.dp)) // reduce o ajusta el espacio
         Text(
-            text = "Solidar",
-            style = MaterialTheme.typography.titleMedium,
-        )
+            text = "SOLIDAR",
+            style = MaterialTheme.typography.titleLarge,
+        ) */
     }
 }

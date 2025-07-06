@@ -9,11 +9,16 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.gabo.solidar.ui.theme.BackgroundColor
 
 @Composable
 fun SearchBar(
@@ -28,9 +33,15 @@ fun SearchBar(
         onValueChange = { onQueryChange(it) },
         modifier =
             modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-        placeholder = { Text(placeholder) },
+                .fillMaxWidth(),
+        placeholder = {
+            Text(
+                text = placeholder,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 17.sp,
+                )
+            )
+        },
         singleLine = true,
         leadingIcon = {
             Icon(imageVector = Icons.Default.Search, contentDescription = "search")
@@ -46,6 +57,9 @@ fun SearchBar(
             KeyboardActions(onSearch = {
                 onSearch(query)
             }),
-        shape = RoundedCornerShape(16.dp),
+        colors = TextFieldDefaults.colors().copy(
+            focusedContainerColor = BackgroundColor,
+            unfocusedContainerColor = BackgroundColor
+        )
     )
 }

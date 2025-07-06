@@ -17,6 +17,8 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.gabo.solidar.ui.navigation.NavigationRoutes
+import com.gabo.solidar.ui.theme.BackgroundBlue
+import com.gabo.solidar.ui.theme.BackgroundColor
 
 @Composable
 fun BottomBar(controller: NavHostController) {
@@ -31,7 +33,9 @@ fun BottomBar(controller: NavHostController) {
             unselectedIconColor = MaterialTheme.colorScheme.primary,
             unselectedTextColor = MaterialTheme.colorScheme.primary,
         )
-    NavigationBar {
+    NavigationBar(
+        containerColor = BackgroundColor
+    ) {
         NavigationBarItem(
             selected = navBackStackEntry?.destination?.hierarchy?.any { it.route == NavigationRoutes.Home.route } == true,
             onClick = { controller.navigate(NavigationRoutes.Home.route) },

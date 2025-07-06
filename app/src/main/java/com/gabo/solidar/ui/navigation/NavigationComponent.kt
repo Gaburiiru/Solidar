@@ -6,15 +6,19 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.gabo.solidar.data.MockPosts
+import com.gabo.solidar.data.MockProjects
 import com.gabo.solidar.ui.screens.discover.Discover
 import com.gabo.solidar.ui.screens.home.Home
 import com.gabo.solidar.ui.screens.home.PostExperience
 import com.gabo.solidar.ui.screens.login.Login
 import com.gabo.solidar.ui.screens.login.Register
 import com.gabo.solidar.ui.screens.post.Post
+import com.gabo.solidar.ui.screens.proyect.ProjectDetails
 import com.gabo.solidar.ui.screens.proyect.Proyect
 import com.gabo.solidar.ui.screens.splash.Splash
 import com.gabo.solidar.ui.screens.userProfile.EditUserProfile
@@ -28,6 +32,7 @@ fun NavigationComponent(
     modifier: Modifier = Modifier,
 ) {
     val postMock = MockPosts.entries.map { it.toPostModel() }
+    val projectMock = MockProjects.entries.map { it.toProjectModel() }
 
     NavHost(
         navController = navigationController,
@@ -49,7 +54,7 @@ fun NavigationComponent(
         }
 
         composable(NavigationRoutes.Proyect.route) {
-            Proyect()
+            Proyect(projectMock, navController = navigationController)
         }
         composable(NavigationRoutes.Post.route) {
             Post()
@@ -61,7 +66,17 @@ fun NavigationComponent(
             Register(navController = navigationController)
         }
         composable(NavigationRoutes.Discover.route) {
-            Discover()
+            Discover(projectMock, navController = navigationController)
+        }
+        composable(
+            NavigationRoutes.ProjectDetails.route + "/{projectId}",
+            arguments = listOf(navArgument("projectId") { type = NavType.LongType})
+        ) { backStackEntry ->
+            val projectId = backStackEntry.arguments?.getLong("projectId")
+            ProjectDetails(
+                projectId = projectId,
+                navController = navigationController
+            )
         }
         composable(NavigationRoutes.PostExperience.route) {
             PostExperience(

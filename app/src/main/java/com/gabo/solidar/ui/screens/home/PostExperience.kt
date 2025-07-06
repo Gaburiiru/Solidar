@@ -1,5 +1,6 @@
 package com.gabo.solidar.ui.screens.home
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -48,6 +49,7 @@ import com.gabo.solidar.ui.theme.LightMagenta
 import com.gabo.solidar.ui.theme.LightRed
 import com.gabo.solidar.ui.theme.LightYellow
 
+@SuppressLint("UnrememberedGetBackStackEntry")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PostExperience(navController: NavController) {

@@ -36,7 +36,6 @@ fun Filter(
                 .fillMaxWidth()
                 .padding(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp),
     ) {
         items(filterGroups.keys.toList()) { group ->
             Box {

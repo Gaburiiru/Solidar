@@ -1,5 +1,6 @@
 package com.gabo.solidar.ui.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,11 +37,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.gabo.solidar.data.MockProjects
 import com.gabo.solidar.domain.model.ProjectModel
 import com.gabo.solidar.domain.type.AssistanceArea
 import com.gabo.solidar.domain.type.AssistanceType
+import com.gabo.solidar.domain.type.ProjectState
+import com.gabo.solidar.ui.navigation.NavigationRoutes
 import com.gabo.solidar.ui.theme.Blue
 import com.gabo.solidar.ui.theme.Green
 import com.gabo.solidar.ui.theme.LightBlue
@@ -50,8 +57,13 @@ import com.gabo.solidar.ui.theme.LightYellow
 import com.gabo.solidar.ui.theme.Yellow
 import com.gabo.solidar.ui.theme.cardColor
 
+@SuppressLint("UnrememberedGetBackStackEntry")
 @Composable
-fun ProjectItem(project: ProjectModel) {
+fun ProjectItem(
+    isDiscoverScreen: Boolean,
+    project: ProjectModel,
+    navController: NavController
+) {
     Card(
         modifier =
             Modifier
@@ -59,6 +71,11 @@ fun ProjectItem(project: ProjectModel) {
                 .fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = cardColor),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp),
+        onClick = {
+            navController.navigate(NavigationRoutes.ProjectDetails.route + "/${project.id}")
+        },
+
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             // Header
@@ -68,7 +85,7 @@ fun ProjectItem(project: ProjectModel) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(0.75f),
+                    modifier = Modifier.fillMaxWidth(0.75f).weight(1f),
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
@@ -128,16 +145,18 @@ fun ProjectItem(project: ProjectModel) {
             Spacer(modifier = Modifier.height(8.dp))
 
             // Descripción
-            Row(
-                modifier =
-                    Modifier
-                        .padding(horizontal = 8.dp)
-                        .fillMaxWidth(),
-            ) {
-                Text(
-                    text = project.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
+            if (isDiscoverScreen) {
+                Row(
+                    modifier =
+                        Modifier
+                            .padding(horizontal = 8.dp)
+                            .fillMaxWidth(),
+                ) {
+                    Text(
+                        text = project.description,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -149,6 +168,22 @@ fun ProjectItem(project: ProjectModel) {
                         .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
             ) {
+                if (!isDiscoverScreen) {
+                    AssistChip(
+                        onClick = {},
+                        label = { Text(project.state.n) },
+                        colors =
+                            AssistChipDefaults.assistChipColors(
+                                containerColor =
+                                    when (project.state) {
+                                        ProjectState.URGENT -> LightRed
+                                        ProjectState.STARTING -> Yellow
+                                        ProjectState.ACTIVE -> Green
+                                    },
+                            ),
+                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                }
                 AssistChip(
                     onClick = {},
                     label = { Text(project.assistanceArea.n) },
@@ -165,20 +200,22 @@ fun ProjectItem(project: ProjectModel) {
                                 },
                         ),
                 )
-                Spacer(modifier = Modifier.width(12.dp))
-                AssistChip(
-                    onClick = {},
-                    label = { Text(project.assistanceType.n) },
-                    colors =
-                        AssistChipDefaults.assistChipColors(
-                            containerColor =
-                                when (project.assistanceType) {
-                                    AssistanceType.DONATION -> Green
-                                    AssistanceType.VOLUNTARY -> Yellow
-                                    AssistanceType.PROFESSIONAL -> Blue
-                                },
-                        ),
-                )
+                if (isDiscoverScreen) {
+                    Spacer(modifier = Modifier.width(12.dp))
+                    AssistChip(
+                        onClick = {},
+                        label = { Text(project.assistanceType.n) },
+                        colors =
+                            AssistChipDefaults.assistChipColors(
+                                containerColor =
+                                    when (project.assistanceType) {
+                                        AssistanceType.DONATION -> Green
+                                        AssistanceType.VOLUNTARY -> Yellow
+                                        AssistanceType.PROFESSIONAL -> Blue
+                                    },
+                            ),
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -229,5 +266,5 @@ fun ProjectItem(project: ProjectModel) {
 @Preview
 @Composable
 fun PreviewProjectItem() {
-    ProjectItem(MockProjects.HUELLITAS.toProjectModel())
+    ProjectItem(false, MockProjects.HUELLITAS.toProjectModel(), rememberNavController())
 }

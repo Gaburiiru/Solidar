@@ -24,9 +24,8 @@ val Typography =
             ),
         bodySmall =
             TextStyle(
-                fontFamily = Fonts.MontserratThin,
-                fontWeight = FontWeight.Thin,
-                fontSize = 10.sp,
+                fontFamily = Fonts.QuickSandRegular,
+                fontSize = 12.sp,
                 color = Color.Black,
             ),
         bodyLarge =

@@ -65,6 +65,7 @@ fun CardItem(
             navController.navigate(NavigationRoutes.PostExperience.route)
         },
         colors = CardDefaults.cardColors(containerColor = cardColor),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
