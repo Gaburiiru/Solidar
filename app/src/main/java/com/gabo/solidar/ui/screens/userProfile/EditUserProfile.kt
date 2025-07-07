@@ -125,7 +125,7 @@ fun EditUserProfile(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                OutlinedButton(onClick = { }) {
+                OutlinedButton(onClick = {}) {
                     Text("Cancelar")
                 }
                 Button(onClick = { }) {
