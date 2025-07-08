@@ -16,6 +16,7 @@ enum class MockPosts(
     val shared: Long,
     val pictures: String,
     val assistanceArea: AssistanceArea,
+    val verified: Boolean,
 ) {
     GREENPEACE(
         author = "Greenpeace",
@@ -33,6 +34,7 @@ enum class MockPosts(
         shared = 3,
         pictures = "https://www.fundacionaquae.org/wp-content/uploads/2019/09/ballena.jpg",
         assistanceArea = AssistanceArea.ANIMALS,
+        verified = true,
     ),
 
     PAULA_RIVERO(
@@ -50,6 +52,7 @@ enum class MockPosts(
         shared = 2,
         pictures = "https://www.ademys.org.ar/v2/wp-content/uploads/2020/07/aula-vacia-3.jpg",
         assistanceArea = AssistanceArea.HUMAN_RIGHTS,
+        verified = false,
     ),
 
     HOSPITAL_DEL_SUR(
@@ -67,6 +70,7 @@ enum class MockPosts(
         shared = 7,
         pictures = "https://ipsst.gov.ar/wordpress/wp-content/uploads/2023/06/donacion-sangre.jpg",
         assistanceArea = AssistanceArea.PEOPLE,
+        verified = true,
     ),
 
     RAFAEL_MONTIEL(
@@ -84,6 +88,7 @@ enum class MockPosts(
         shared = 4,
         pictures = "https://i.ytimg.com/vi/LmjDD9zqfuo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-DoACuAiKAgwIABABGGUgTShHMA8=&rs=AOn4CLBOjLWim0iERSnaXugM93i5BCHLjA",
         assistanceArea = AssistanceArea.ANIMALS,
+        verified = false,
     ),
 
     FUNDACION_ALIMENTO_DIGNO(
@@ -101,6 +106,7 @@ enum class MockPosts(
         shared = 6,
         pictures = "https://revista360grados.com.mx/wp-content/uploads/2023/04/comer-sano.jpeg",
         assistanceArea = AssistanceArea.HUMANITARIAN_AID,
+        verified = true,
     ),
 
     ISABEL_MORA(
@@ -118,6 +124,7 @@ enum class MockPosts(
         shared = 10,
         pictures = "https://www.lanacion.com.ar/resizer/v2/temporal-e-inundacion-en-bahia-blanca-avenida-X7U4VWLF4REZXMY6PORN4UARYI.JPG?auth=0d8cf75d2437754e498c884c6dd56b408e3a0ae80baeabf8c1eee7cdb6cff142&width=420&height=280&quality=70&smart=true",
         assistanceArea = AssistanceArea.HUMANITARIAN_AID,
+        verified = false,
     ),
     VALENTINA_DIAZ(
         author = "Valentina Díaz",
@@ -134,6 +141,7 @@ enum class MockPosts(
         shared = 3,
         pictures = "https://phantom-elmundo.uecdn.es/e78a8e4aa3b06fb0c0473c7b9fcac43c/crop/1x0/1280x853/resize/828/f/jpg/assets/multimedia/imagenes/2025/03/03/17410151982347.jpg",
         assistanceArea = AssistanceArea.CLIMATE_CHANGE,
+        verified = false,
     ),
 
     ONG_NIUNNINOMAS(
@@ -151,6 +159,7 @@ enum class MockPosts(
         shared = 9,
         pictures = "https://storage.googleapis.com/bucket-diarioactualidad/2023/06/c4c89567-ni-una-menos.jpg",
         assistanceArea = AssistanceArea.HUMAN_RIGHTS,
+        verified = true,
     ),
 
     MATIAS_FONSECA(
@@ -168,6 +177,7 @@ enum class MockPosts(
         shared = 5,
         pictures = "https://i0.wp.com/www.lanoticiaweb.com.ar/wp-content/uploads/2025/07/Sin-titulo-1.png?resize=466%2C308&ssl=1",
         assistanceArea = AssistanceArea.HUMANITARIAN_AID,
+        verified = false,
     ),
 
     ONG_LEE_CONMIGO(
@@ -185,6 +195,7 @@ enum class MockPosts(
         shared = 2,
         pictures = "https://www.comunidadbaratz.com/wp-content/uploads/En-el-mundo-existen-150.000.000-de-libros%E2%80%A6-y-estos-son-los-100-mejores.jpg",
         assistanceArea = AssistanceArea.PEOPLE,
+        verified = true,
     ),
 
     AGUSTINA_BARRIOS(
@@ -202,6 +213,7 @@ enum class MockPosts(
         shared = 4,
         pictures = "https://geriatricos.portalgeriatrico.com.ar/wp-content/uploads/2019/11/WhatsApp-Image-2020-06-10-at-11.13.55-3.jpeg",
         assistanceArea = AssistanceArea.PEOPLE,
+        verified = false,
     ),
     ;
 
@@ -220,5 +232,6 @@ enum class MockPosts(
             shared = shared,
             pictures = pictures,
             assistanceArea = assistanceArea,
+            verified = verified,
         )
 }

@@ -16,4 +16,5 @@ data class PostModel(
     val shared: Long,
     val pictures: String,
     val assistanceArea: AssistanceArea,
+    val verified: Boolean
 )
