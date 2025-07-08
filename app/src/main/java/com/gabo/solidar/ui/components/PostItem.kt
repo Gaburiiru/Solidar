@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.gabo.solidar.ui.theme.cardColor
 
 @Composable
 fun PostItem(post: PostModel, modifier: Modifier = Modifier) {
@@ -33,6 +34,7 @@ fun PostItem(post: PostModel, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(8.dp),
         shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = cardColor),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Row(
