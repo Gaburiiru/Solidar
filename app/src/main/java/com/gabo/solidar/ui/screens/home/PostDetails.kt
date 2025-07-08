@@ -1,6 +1,7 @@
 package com.gabo.solidar.ui.screens.home
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,7 +20,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChatBubble
+import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
@@ -37,10 +41,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.gabo.solidar.R
 import com.gabo.solidar.domain.type.AssistanceArea
 import com.gabo.solidar.ui.navigation.NavigationRoutes
 import com.gabo.solidar.ui.theme.LightBlue
@@ -52,7 +61,7 @@ import com.gabo.solidar.ui.theme.LightYellow
 @SuppressLint("UnrememberedGetBackStackEntry")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PostExperience(navController: NavController) {
+fun PostDetails(navController: NavController) {
     val parentEntry =
         remember(navController) {
             navController.getBackStackEntry(NavigationRoutes.Home.route)
@@ -82,7 +91,8 @@ fun PostExperience(navController: NavController) {
                 Modifier
                     .padding(innerPadding)
                     .padding(16.dp)
-                    .fillMaxSize().verticalScroll(rememberScrollState()),
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Column {
@@ -102,7 +112,16 @@ fun PostExperience(navController: NavController) {
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Column {
-                            Text(post.author)
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(post.author)
+                                if (post.verified) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.verified),
+                                        contentDescription = stringResource(id = R.string.app_name),
+                                        modifier = Modifier.size(20.dp),
+                                    )
+                                }
+                            }
                             Text(post.date, style = MaterialTheme.typography.bodySmall)
                         }
                     }
@@ -139,11 +158,13 @@ fun PostExperience(navController: NavController) {
 
                 AsyncImage(
                     model = post.pictures,
-                    contentDescription = "Foto de de ${post.author}",
+                    contentDescription = "Foto de ${post.author}",
                     modifier =
                         Modifier
                             .fillMaxWidth()
+                            .height(200.dp)
                             .clip(RoundedCornerShape(20.dp)),
+                    contentScale = ContentScale.Crop,
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -151,7 +172,7 @@ fun PostExperience(navController: NavController) {
                 Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            imageVector = Icons.Filled.Favorite,
+                            imageVector = Icons.Filled.FavoriteBorder,
                             contentDescription = "Likes",
                         )
                         Spacer(modifier = Modifier.width(4.dp))
@@ -160,7 +181,7 @@ fun PostExperience(navController: NavController) {
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            imageVector = Icons.Filled.ChatBubble,
+                            imageVector = Icons.Filled.ChatBubbleOutline,
                             contentDescription = "Comments",
                         )
                         Spacer(modifier = Modifier.width(4.dp))

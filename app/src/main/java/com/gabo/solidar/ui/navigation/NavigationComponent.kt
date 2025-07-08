@@ -14,7 +14,7 @@ import com.gabo.solidar.data.MockPosts
 import com.gabo.solidar.data.MockProjects
 import com.gabo.solidar.ui.screens.discover.Discover
 import com.gabo.solidar.ui.screens.home.Home
-import com.gabo.solidar.ui.screens.home.PostExperience
+import com.gabo.solidar.ui.screens.home.PostDetails
 import com.gabo.solidar.ui.screens.login.Login
 import com.gabo.solidar.ui.screens.login.Register
 import com.gabo.solidar.ui.screens.post.Post
@@ -78,8 +78,8 @@ fun NavigationComponent(
                 navController = navigationController
             )
         }
-        composable(NavigationRoutes.PostExperience.route) {
-            PostExperience(
+        composable(NavigationRoutes.PostDetails.route) {
+            PostDetails(
                 navController = navigationController,
             )
         }
