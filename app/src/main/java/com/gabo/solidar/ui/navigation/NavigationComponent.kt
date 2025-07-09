@@ -57,7 +57,7 @@ fun NavigationComponent(
             Proyect(projectMock, navController = navigationController)
         }
         composable(NavigationRoutes.Post.route) {
-            Post()
+            Post(navController = navigationController)
         }
         composable(NavigationRoutes.Login.route) {
             Login(navController = navigationController)
@@ -70,12 +70,12 @@ fun NavigationComponent(
         }
         composable(
             NavigationRoutes.ProjectDetails.route + "/{projectId}",
-            arguments = listOf(navArgument("projectId") { type = NavType.LongType})
+            arguments = listOf(navArgument("projectId") { type = NavType.LongType }),
         ) { backStackEntry ->
             val projectId = backStackEntry.arguments?.getLong("projectId")
             ProjectDetails(
                 projectId = projectId,
-                navController = navigationController
+                navController = navigationController,
             )
         }
         composable(NavigationRoutes.PostDetails.route) {

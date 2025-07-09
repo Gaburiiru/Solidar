@@ -1,5 +1,6 @@
 package com.gabo.solidar.ui.screens.discover
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +33,7 @@ import com.gabo.solidar.ui.components.Filter
 import com.gabo.solidar.ui.components.ProjectItem
 import com.gabo.solidar.ui.components.SearchBar
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Discover(
@@ -60,8 +62,8 @@ fun Discover(
                 )
             })
         }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding)) {
+    ) {
+        Column(modifier = Modifier.padding(top = 90.dp)) {
             Column(
                 modifier = Modifier.fillMaxSize(),
             ) {

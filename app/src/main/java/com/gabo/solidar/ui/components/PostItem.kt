@@ -35,7 +35,7 @@ fun PostItem(post: PostModel, modifier: Modifier = Modifier) {
             .padding(8.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = cardColor),
-        elevation = CardDefaults.cardElevation(8.dp)
+        elevation = CardDefaults.cardElevation(2.dp)
     ) {
         Row(
             modifier = Modifier
@@ -54,7 +54,7 @@ fun PostItem(post: PostModel, modifier: Modifier = Modifier) {
                 )
                 Text(
                     text = post.title,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
