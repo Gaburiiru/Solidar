@@ -1,31 +1,19 @@
 package com.gabo.solidar.ui.screens.userProfile
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,12 +27,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.gabo.solidar.data.MockPosts
+import coil.compose.AsyncImage
+import com.gabo.solidar.data.MockUser
 import com.gabo.solidar.ui.components.PostItem
 import com.gabo.solidar.ui.navigation.NavigationRoutes
 
@@ -60,33 +46,39 @@ fun UserProfile(navController: NavController) {
     ) { paddingValues ->
         LazyColumn(
             contentPadding = paddingValues,
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surface)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.surface),
         ) {
             item {
                 Column(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth(),
+                    modifier =
+                        Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Box(
-                        modifier = Modifier
-                            .size(80.dp)
-                            .clip(CircleShape)
-                            .background(Color.Gray),
+                        modifier =
+                            Modifier
+                                .size(80.dp)
+                                .clip(CircleShape)
+                                .background(Color.Gray),
                     ) {
-                        Icon(
-                            Icons.Default.Person,
-                            contentDescription = "Avatar",
-                            modifier = Modifier.align(Alignment.Center)
+                        AsyncImage(
+                            model = "https://randomuser.me/api/portraits/women/3.jpg",
+                            contentDescription = "Foto de perfil",
+                            modifier =
+                                Modifier
+                                    .size(80.dp)
+                                    .clip(CircleShape),
                         )
                     }
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    Text("Juan Perez", style = MaterialTheme.typography.titleLarge)
+                    Text("Sofía Méndez", style = MaterialTheme.typography.titleLarge)
 
                     Spacer(modifier = Modifier.height(8.dp))
 
@@ -106,19 +98,18 @@ fun UserProfile(navController: NavController) {
                     }) {
                         Text("Edit")
                     }
-
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
             }
 
-            items(MockPosts.entries.toTypedArray()) { mock ->
+            items(MockUser.entries.toTypedArray()) { mock ->
                 PostItem(
                     post = mock.toPostModel(),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 6.dp)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 6.dp),
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(2.dp))
             }
         }
     }

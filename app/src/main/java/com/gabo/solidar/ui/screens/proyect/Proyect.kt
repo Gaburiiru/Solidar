@@ -1,5 +1,6 @@
 package com.gabo.solidar.ui.screens.proyect
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,15 +25,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.gabo.solidar.domain.model.ProjectModel
-import com.gabo.solidar.domain.type.AssistanceArea
-import com.gabo.solidar.domain.type.AssistanceType
 import com.gabo.solidar.domain.type.ProjectState
 import com.gabo.solidar.ui.components.Filter
 import com.gabo.solidar.ui.components.ProjectItem
-import com.gabo.solidar.ui.components.SearchBar
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Proyect(
@@ -44,7 +42,7 @@ fun Proyect(
     val filterData =
         mapOf(
             "Fecha de Actividad" to emptyList(),
-            "Estado" to ProjectState.entries.map { it.n }
+            "Estado" to ProjectState.entries.map { it.n },
         )
     var selectedGroup by remember { mutableStateOf<String?>(null) }
 
@@ -53,17 +51,18 @@ fun Proyect(
             TopAppBar(
                 title = {
                     Text(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth(),
                         text = "Proyectos guardados",
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 23.sp)
+                        style = MaterialTheme.typography.titleMedium.copy(fontSize = 23.sp),
                     )
-                }
+                },
             )
-        }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding)) {
+        },
+    ) {
+        Column(modifier = Modifier.padding(top = 90.dp)) {
             Column {
                 TabRow(modifier = Modifier.fillMaxWidth(), selectedTabIndex = selectedTabIndex) {
                     tabTitles.forEachIndexed { index, title ->
@@ -75,8 +74,9 @@ fun Proyect(
                             text = {
                                 Text(
                                     text = title,
-                                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp)
-                                ) },
+                                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 14.sp),
+                                )
+                            },
                         )
                     }
                 }
@@ -92,7 +92,7 @@ fun Proyect(
                         selectedGroup = selectedGroup,
                         onFilterSelected = { group, option ->
                             selectedGroup = group
-                        }
+                        },
                     )
                 }
 

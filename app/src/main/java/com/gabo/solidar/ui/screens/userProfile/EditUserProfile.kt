@@ -49,12 +49,13 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.gabo.solidar.ui.navigation.NavigationRoutes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditUserProfile(navController: NavController) {
-    var nombre by remember { mutableStateOf("Juan Perez") }
+    var nombre by remember { mutableStateOf("Sofía Méndez") }
 
     Scaffold(
         topBar = {
@@ -95,10 +96,13 @@ fun EditUserProfile(navController: NavController) {
                     .background(Color.Gray),
                 contentAlignment = Alignment.Center,
             ) {
-                Icon(
-                    imageVector = Icons.Default.Person,
+                AsyncImage(
+                    model = "https://randomuser.me/api/portraits/women/3.jpg",
                     contentDescription = "Foto de perfil",
-                    modifier = Modifier.size(72.dp),
+                    modifier =
+                        Modifier
+                            .size(150.dp)
+                            .clip(CircleShape),
                 )
             }
 

@@ -13,6 +13,8 @@ val tertiary = Color(0xFFA4D3EF)
 val cardColor = Color(0xFFFFFFFF)
 val BackgroundColor = Color(0xFFF0F2F5)
 val BackgroundBlue = Color(0xFFB5D0E2)
+val BackgroundColorBottomBar = Color(0xFFF0F2F5)
+
 
 // Tags
 val LightYellow = Color(0xFFF8E16C)
